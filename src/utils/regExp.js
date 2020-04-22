@@ -138,3 +138,25 @@ let reg14 = /^[\d]+$/
 reg14.test('d') // =>false
 reg14.test('\\') // =>false
 reg14.test('9') // =>true
+
+let reg15 = /^[\\d]+$/
+reg15.test('d') // =>true
+reg15.test('\\') // =>true
+reg15.test('9') // =>false
+
+// 2. 中括号不存在多位数
+let reg16 = /^[18]$/
+reg16.test('1') // =>true
+reg16.test('8') // =>true
+reg16.test('18') // =>false
+
+let reg17 = /^[10-29]$/ //=> 1或者0-2或者9
+
+let reg18 = /^[(10-29)]$/ 
+reg18.test('(') // =>true
+reg18.test(')') // =>true
+reg18.test('1') // =>true
+reg18.test('0') // =>true
+reg18.test('2') // =>true
+reg18.test('9') // =>true
+reg18.test('12') // =>false
