@@ -23,3 +23,25 @@ const jack = new boy('jack');
 
 jack.sayHello();
 jack.sayName();
+
+function testParent(name) {
+  this.name = { name };
+}
+
+testParent.prototype.sayName = function() {
+  console.log(this.name);
+};
+
+function testChildren(name, age, sex) {
+  this.age = age;
+  this.sex = sex;
+  testParent.call(this, name);
+}
+
+testChildren.prototype = new testParent();
+
+testChildren.prototype.sayHello = function() {
+  console.log('hello');
+};
+
+testChildren.prototype.constructor = testChildren;
